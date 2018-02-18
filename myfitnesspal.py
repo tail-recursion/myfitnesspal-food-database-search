@@ -7,6 +7,7 @@ base_url = 'http://www.myfitnesspal.com/food/search?search='
 
 def search(query):
     query = query.replace(' ','%20')
+    query = query.replace('&','') # don't want & in get query parameters
     url = base_url + query
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'lxml')
